@@ -1,0 +1,15 @@
+#!/bin/tcsh
+
+#BSUB -P UMCP0009                # project code
+#BSUB -W 12:00                   # wall-clock time (hrs:mins)
+#BSUB -n 1                       # number of tasks in job         
+##BSUB -R "span[ptile=16]"       # run 16 MPI tasks per node
+#BSUB -J 2017           # job name
+#BSUB -o 2017.%J.out    # output file name in which %J is replaced by the job ID
+#BSUB -e 2017.%J.err    # error file name in which %J is replaced by the job ID
+#BSUB -q premium                 # queue
+#BSUB -N                         # sends report to you by e-mail when the job finishes
+
+ncl noaa_nsst2soda_3.3.1_2017.ncl >&! ncl_bsub_3.3.1_2017_1.log
+
+exit 0
